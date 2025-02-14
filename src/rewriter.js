@@ -5,7 +5,7 @@
  *****************************************************/
 var simpleHelper = function(base, usePath) {
     var stringRegex = base.replaceAll("/", "\\/").replaceAll(".", "\\.");
-    if (usePath) {
+    if (usePath === undefined) {
         stringRegex += "(.*)";
     }
     var regex = new RegExp(stringRegex);
