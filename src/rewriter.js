@@ -34,7 +34,6 @@ function handler(event) {
     var host = request.headers.host.toLocaleLowerCase();
 
     for (var i = 0; i < regexPatterns.length; i++) {
-        
         if (regexPatterns[i].host.toLocaleLowerCase() === host) {
             var pattern = regexPatterns[i];
             var match = pattern.regex.exec(uri);
