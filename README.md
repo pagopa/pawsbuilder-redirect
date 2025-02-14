@@ -48,7 +48,7 @@ Riconosce semplici path identificati da una stringa iniziale statica.
 
 Il _builder_ accetta due parametri:
 - _base_: stringa iniziale dell'URI
-  _usePath_ : indica alla regex se riconoscere come gruppo la stringa che segue _base_
+- _usePath_ : indica alla regex se riconoscere come gruppo la stringa che segue _base_
 
 La regex crea un gruppo:
 
