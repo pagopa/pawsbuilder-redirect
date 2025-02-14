@@ -26,8 +26,7 @@ describe('ioapp.it redirects', () => {
     it('Should intercept ioapp.it redirects', () => {
         expect(handler(buildRequest("ioapp.it", "/it/blocco-accesso/magic-link/"))).toEqual(buildResponse( "https://account.ioapp.it/it/blocco-accesso/link-scaduto/"));
         expect(handler(buildRequest("ioapp.it", "/it/blocco-accesso/magic-link"))).toEqual(buildResponse( "https://account.ioapp.it/it/blocco-accesso/link-scaduto/"));
-
-        expect(handler(buildRequest("ioapp.it", "/it/blocco-accesso/magic-link/something"))).toEqual( buildRequest("ioapp.it", "/it/blocco-accesso/magic-link/something").request )
+        expect(handler(buildRequest("ioapp.it", "/it/blocco-accesso/magic-link/something"))).toEqual(buildResponse( "https://account.ioapp.it/it/blocco-accesso/link-scaduto/"));
     });
 
     it('Should not intercept these resources', () => {

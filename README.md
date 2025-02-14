@@ -46,12 +46,13 @@ Per facilitare la scrittura delle regex di riconoscimento è disponibile l'_help
 ### simpleHelper
 Riconosce semplici path identificati da una stringa iniziale statica.
 
-Il _builder_ accetta un parametro:
+Il _builder_ accetta due parametri:
 - _base_: stringa iniziale dell'URI
+  _usePath_ : indica alla regex se riconoscere come gruppo la stringa che segue _base_
 
 La regex crea un gruppo:
 
-- 1: (opzionale) contiene il path
+- 1: (opzionale) contiene il path se _usePath_ è _true_
 
 Ad esempio invocando l'helper `simpleHelper("/path_molto_esteso/sotto-path/path_finale")` otteniamo una regex che restituirà i seguenti valori:
 
@@ -59,7 +60,11 @@ Ad esempio invocando l'helper `simpleHelper("/path_molto_esteso/sotto-path/path_
 | --- | ------- |
 | /path_molto_esteso/sotto_path/path_finale | /path_finale
 
+Mentre se invochiamo lo stesso helper `simpleHelper("/path_molto_esteso/sotto-path/path_finale", false)` otteniamo
 
+| URI | gruppo 1 |
+| --- | ------- |
+| /path_molto_esteso/sotto_path/path_finale | _null_
 
 ## Distribuzione
 Una volta verificata la nuova regola, copia il file **[src/rewriter.js](/src/rewriter.js)** aggiornato nella CloudFront Function, in modo che l’ambiente di produzione utilizzi la versione testata.

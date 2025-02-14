@@ -3,8 +3,11 @@
  * follow the instructions here:                     *
  * https://github.com/pagopa/pawsbuilder-redirect    *
  *****************************************************/
-var simpleHelper = function(base) {
-    var stringRegex = base.replaceAll("/", "\\/").replaceAll(".", "\\.") + "(.*)";
+var simpleHelper = function(base, usePath) {
+    var stringRegex = base.replaceAll("/", "\\/").replaceAll(".", "\\.");
+    if (usePath) {
+        stringRegex += "(.*)";
+    }
     var regex = new RegExp(stringRegex);
     regex._helper = "simpleHelper";
     return regex;
@@ -12,7 +15,7 @@ var simpleHelper = function(base) {
 
 var regexPatterns = [
     {
-        host: "ioapp.it", regex: simpleHelper("/it/blocco-accesso/magic-link/?$"), redirectTo: "https://account.ioapp.it/it/blocco-accesso/link-scaduto/"
+        host: "ioapp.it", regex: simpleHelper("/it/blocco-accesso/magic-link", false), redirectTo: "https://account.ioapp.it/it/blocco-accesso/link-scaduto/"
     },
 
 ];
@@ -45,7 +48,7 @@ function handler(event) {
 
                 var targetUri = pattern.redirectTo;
 
-                if (path) {
+                if (path != null) {
                     targetUri += path;
                 }
 
