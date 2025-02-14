@@ -57,7 +57,7 @@ Ad esempio invocando l'helper `simpleHelper("/path_molto_esteso/sotto-path/path_
 
 | URI | gruppo 1 |
 | --- | ------- |
-| /path_molto_esteso/sotto_path | /path_finale
+| /path_molto_esteso/sotto_path/path_finale | /path_finale
 
 
 
